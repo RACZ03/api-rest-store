@@ -1,9 +1,8 @@
 
 export const signUp = (req, res) => {
 
-    const { email, password } =  req.body;
-    console.log( req.body)
-    res.json('SignUp');
+    const user =  req.body;
+    return user;
 } 
 
 export const signIn = (req, res) => {

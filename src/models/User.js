@@ -1,6 +1,10 @@
 import { Schema, model } from 'mongoose';
 
 const userSchema = new Schema({
+    idRole: { 
+        ref: "Role",
+        type: Schema.Types.ObjectId
+    }, 
     username: String,
     email: {
         type: String,
@@ -10,13 +14,12 @@ const userSchema = new Schema({
         type: String,
         required:  true
     },
-    roles: [{ 
-        ref: "Role",
-        type: Schema.Types.ObjectId
-    }]
+    photo: String,
+    phoneNumber: Number,
+    status: Boolean
 }, {
     timestamps: true,
     versionkey: false
 });
 
-export default  model('User',userSchema)
+export default  model('User', userSchema);
