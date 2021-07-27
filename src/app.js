@@ -14,7 +14,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.json({
+    res.status(200).json({
         name: app.get('pkg').name,
         author: app.get('pkg').author,
         description: app.get('pkg').description,

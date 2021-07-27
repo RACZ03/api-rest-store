@@ -2,9 +2,10 @@
 export const signUp = (req, res) => {
 
     const user =  req.body;
-    return user;
+    res.status(200).json(req.body);
+
 } 
 
 export const signIn = (req, res) => {
-    res.json('SignIn');
+    res.status(204).json(req.body);
 }
