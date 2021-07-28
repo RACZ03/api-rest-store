@@ -16,12 +16,18 @@
 							{
 								"key": "Content-Transfer-Encoding",
 								"value": "application/vnd.api+json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"rmorck03@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+							"raw": "{\r\n    \"username\": \"Robert\",\r\n    \"email\": \"rmorck03@gmail.com\",\r\n    \"password\": \"1234\",\r\n    \"photo\": \"profile.png\",\r\n    \"phoneNumber\": 86604980\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -48,8 +54,30 @@
 					"name": "SignIn",
 					"request": {
 						"method": "POST",
-						"header": [],
-						"url": null
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"rmorck03@gmail.com\",\r\n    \"password\": \"1234\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
 					},
 					"response": []
 				}
