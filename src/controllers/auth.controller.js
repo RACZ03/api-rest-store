@@ -1,7 +1,12 @@
+const validator = require('validator');
 
 export const signUp = (req, res) => {
+    // recoger parametros de la request
+    const { username, email, password, photo, phoneNumber } =  req.body;
 
-    const user =  req.body;
+    // validate params
+
+    // Response
     res.status(200).json(req.body);
 
 } 
