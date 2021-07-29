@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.95% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>45/57</span>
+                <span class='fraction'>60/60</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">88% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>22/25</span>
+                <span class='fraction'>24/30</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.95% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>45/57</span>
+                <span class='fraction'>60/60</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -113,7 +113,10 @@
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -156,25 +159,28 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import validator from 'validator';
 import User from '../models/User';
 import jwt from 'jsonwebtoken';
 import config from '../config';
 &nbsp;
-export const signUp = async (req, res) =&gt; {
+export const signUp = <span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >async (r</span></span></span></span>eq, res) =&gt; {
     // capture data 
     const { username, email, password, photo, phoneNumber } =  req.body;
 &nbsp;
@@ -183,7 +189,7 @@ export const signUp = async (req, res) =&gt; {
     let validate_email = !validator.isEmpty( email ) &amp;&amp; validator.isEmail( email );
     let validate_password = !validator.isEmpty( password );
 &nbsp;
-    if ( validate_username &amp;&amp; validate_email &amp;&amp; validate_password ) {
+    if ( <span class="branch-0 cbranch-no" title="branch not covered" >validate_username<span class="branch-0 cbranch-no" title="branch not covered" > &amp;&amp; validate_email &amp;&amp; v</span>alidate_password ) {</span>
 &nbsp;
         // Create the object
         const newUser = new User({
@@ -201,7 +207,7 @@ export const signUp = async (req, res) =&gt; {
             expiresIn: 86400 // 24 Hours
         });
 &nbsp;
-        res.status(201).json( newUser );
+        res.status(201).json( token );
 &nbsp;
     } else {
         // Incorrect data
@@ -211,20 +217,23 @@ export const signUp = async (req, res) =&gt; {
     }
 } 
 &nbsp;
-export const signIn = <span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >async (r</span></span>eq, res) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    const { email } = req.body;</span>
-<span class="cstat-no" title="statement not covered" >    const foundUser = await User.findOne({'email': email}); </span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    if ( !foundUser ) {</span>
-<span class="cstat-no" title="statement not covered" >        // Incorrect data</span>
-<span class="cstat-no" title="statement not covered" >        res.status(200).json({</span>
-<span class="cstat-no" title="statement not covered" >            message: 'User not found'</span>
-<span class="cstat-no" title="statement not covered" >        });</span>
-<span class="cstat-no" title="statement not covered" >        return;</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
-<span class="cstat-no" title="statement not covered" ></span>
-    res.status(201).json( req.body );
+export const signIn = async (req, res) =&gt; {
+&nbsp;
+    const { email, password } = req.body;
+    const userFound = await User.findOne({'email': email}).populate("idRole"); 
+&nbsp;
+    // Incorrect data
+    if ( !userFound ) return res.status(200).json({ message: 'User not found' });
+&nbsp;
+    const matchPassword = await User.comparePassword( password, userFound.password );
+    
+    if ( !matchPassword ) return res.status(401).json({ message: 'Invalid password' });
+&nbsp;
+    const token = jwt.sign({ id: userFound._id }, config.SECRET, {
+        expiresIn: 86400 // 24 Hours
+    });
+&nbsp;
+    res.status(200).json( { token } );
 }</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -232,7 +241,7 @@ export const signIn = <span class="branch-0 cbranch-no" title="branch not covere
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Jul 28 2021 13:52:07 GMT-0600 (hora estándar central)
+                at Wed Jul 28 2021 21:41:53 GMT-0600 (hora estándar central)
             </div>
         </div>
         <script src="../../prettify.js"></script>

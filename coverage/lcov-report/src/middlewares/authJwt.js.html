@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/app.js</title>
+    <title>Code coverage report for src/middlewares/authJwt.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../prettify.css" />
-    <link rel="stylesheet" href="../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">src</a> app.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/middlewares</a> authJwt.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>32/32</span>
+                <span class='fraction'>35/35</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">92.86% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>26/28</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>32/32</span>
+                <span class='fraction'>35/35</span>
             </div>
         
             
@@ -89,7 +89,9 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -121,39 +123,43 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import express from 'express';
-import morgan from 'morgan';
-import pkg from '../package.json';
-import { createRoles } from './libs/initialSetup';
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import jwt from 'jsonwebtoken';
+import config from '../config';
+import User from '../models/User';
+import Role from '../models/Role';
 &nbsp;
-// Imports routes
-import authRoutes from './routes/auth.routes';
-import userRoutes from './routes/user.routes';
+export const verifyToken = <span class="branch-0 cbranch-no" title="branch not covered" >async (req, res, next) =&gt; {</span>
+    try {
+        const token = req.headers['token'];
+    
+        if ( !token ) return res.status(403).json({ message: 'No token provided' })
+    
+        const decoded = jwt.verify(token, config.SECRET);
+        req.userId = decoded.id;
+    
+        const user = await User.findById( req.userId, { password: 0 } );
+    
+        if ( !user ) return res.status(404).json({ message: 'No user found'})
+    
+        next();
+    } catch (error) {
+        res.status(404).json({ message: 'No user found'})
+    }
+}
 &nbsp;
-const app = express();
-createRoles();
+export const isAdminOrModerator = <span class="branch-0 cbranch-no" title="branch not covered" >async ( r</span>eq, res, next ) =&gt; {
+    const user = await User.findById( req.userId );
+    const role = await Role.findById( user.idRole );
 &nbsp;
-// save a variable in express
-app.set('pkg', pkg);
-&nbsp;
-app.use(morgan('dev'));
-// receive json files
-app.use(express.json());
-&nbsp;
-app.get('/', (req, res) =&gt; {
-    res.status(200).json({
-        name: app.get('pkg').name,
-        author: app.get('pkg').author,
-        description: app.get('pkg').description,
-        version: app.get('pkg').version
-    });
-});
-&nbsp;
-app.use('/api/auth', authRoutes );
-app.use('/api/user', userRoutes );
-&nbsp;
-export default app;
- </pre></td></tr></table></pre>
+    if ( role.name === 'admin' || role.name === 'moderator') {
+        next();
+        return;
+    }
+    
+    return res.status(403).json({ message: 'Requires moderator or administrator role'});
+};</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
@@ -163,14 +169,14 @@ export default app;
                 at Wed Jul 28 2021 21:41:53 GMT-0600 (hora estándar central)
             </div>
         </div>
-        <script src="../prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../sorter.js"></script>
-        <script src="../block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     

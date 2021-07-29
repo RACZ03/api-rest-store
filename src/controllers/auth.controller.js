@@ -30,7 +30,7 @@ export const signUp = async (req, res) => {
             expiresIn: 86400 // 24 Hours
         });
 
-        res.status(201).json( newUser );
+        res.status(201).json( token );
 
     } else {
         // Incorrect data
@@ -42,16 +42,19 @@ export const signUp = async (req, res) => {
 
 export const signIn = async (req, res) => {
 
-    const { email } = req.body;
-    const foundUser = await User.findOne({'email': email}); 
+    const { email, password } = req.body;
+    const userFound = await User.findOne({'email': email}).populate("idRole"); 
 
-    if ( !foundUser ) {
-        // Incorrect data
-        res.status(200).json({
-            message: 'User not found'
-        });
-        return;
-    }
+    // Incorrect data
+    if ( !userFound ) return res.status(200).json({ message: 'User not found' });
 
-    res.status(201).json( req.body );
+    const matchPassword = await User.comparePassword( password, userFound.password );
+    
+    if ( !matchPassword ) return res.status(401).json({ message: 'Invalid password' });
+
+    const token = jwt.sign({ id: userFound._id }, config.SECRET, {
+        expiresIn: 86400 // 24 Hours
+    });
+
+    res.status(200).json( { token } );
 }
