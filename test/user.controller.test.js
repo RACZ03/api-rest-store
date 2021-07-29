@@ -27,17 +27,7 @@ afterAll(() => {
     mongoose.connection.close();
 })
 
-describe('POST /auth/signup', () => {
-
-    // it('Should POST a new  users', async () => {
-    //     const response = await request(app).post('/api/auth/signup') //Define the end point
-    //                                        .send(data)  // Object to send
-    //                                        .set('Accept', 'application/json'); //Headers
-    //     expect( response.status ).toBe(201)
-    //     // expect( response.body.email ).toEqual('steve@gmail.com')
-    //     expect( response.body.email ).toMatch(/@/); // The string must contain an @
-    //     // expect( response.body).not.toBeNull() // Do not return null the body
-    // }, 20000 );    
+describe('POST /auth/signup', () => { 
     
     it('should answer wrong data', async () => {
         let data2 = { ...data };
@@ -52,12 +42,23 @@ describe('POST /auth/signup', () => {
 
     });
 
-    // expect.extend({
-    //     async verifyUser ( email ) {
-            
-    //     }
-    // })
-    
+    it('Should return the user already exists', async () => {
+        const response = await request(app).post('/api/auth/signup') //Define the end point
+                                           .send(data)  // Object to send
+                                           .set('Accept', 'application/json'); //Headers
+        expect( response.status ).toBe(400)
+        expect( response.body.message ).toEqual('The user already exists') // I should answer this message
+    });   
+        
+    // it('Should POST a new  users', async () => {
+    //     const response = await request(app).post('/api/auth/signup') //Define the end point
+    //                                        .send(data)  // Object to send
+    //                                        .set('Accept', 'application/json'); //Headers
+    //     expect( response.status ).toBe(201)
+    //     // expect( response.body.email ).toEqual('steve@gmail.com')
+    //     expect( response.body.email ).toMatch(/@/); // The string must contain an @
+    //     // expect( response.body ).not.toBeNull() // Do not return null the body
+    // }, 20000 );   
 
 });
 
@@ -120,24 +121,24 @@ describe('GET /user/', () => {
         expect( response.body.message ).toEqual('No user found') // I should answer this message
     });
 
-    it('It should not have a user role', async () => {
-        const response = await request(app).get('/api/user/')
-                                     .set('Accept', 'application/json')
-                                     .set('token', token);
+    // it('It should not have a user role', async () => {
+    //     const response = await request(app).get('/api/user/')
+    //                                  .set('Accept', 'application/json')
+    //                                  .set('token', token);
 
-        // expect( response.error ).toBe(true) // Exist errors
-        expect( response.status ).toBe(403)
-        expect( response.body.message ).toEqual('Requires moderator or administrator role') // I should answer this message
-    });
+    //     // expect( response.error ).toBe(true) // Exist errors
+    //     expect( response.status ).toBe(403)
+    //     expect( response.body.message ).toEqual('Requires moderator or administrator role') // I should answer this message
+    // });
 
-    it('Should return users', async () => {
+    // it('Should return users', async () => {
 
-        const response = await request(app).get('/api/user/')
-                                     .set('Accept', 'application/json')
-                                     .set('token', Admintoken);
+    //     const response = await request(app).get('/api/user/')
+    //                                  .set('Accept', 'application/json')
+    //                                  .set('token', Admintoken);
 
-        expect( response.error ).toBe(false) // Don't exist errors
-        expect( response.status ).toBe(200)
-        expect( Array.isArray( response.body.users ) ).toBe(true); // Is an arrangement
-    });
+    //     expect( response.error ).toBe(false) // Don't exist errors
+    //     expect( response.status ).toBe(200)
+    //     expect( Array.isArray( response.body.users ) ).toBe(true); // Is an arrangement
+    // });
 });

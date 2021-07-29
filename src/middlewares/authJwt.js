@@ -33,3 +33,15 @@ export const isAdminOrModerator = async ( req, res, next ) => {
     
     return res.status(403).json({ message: 'Requires moderator or administrator role'});
 };
+
+export const isSuperAdmin = async ( req, res, next ) => {
+    const user = await User.findById( req.userId );
+    const role = await Role.findById( user.idRole );
+
+    if ( role.name === 'admin') {
+        next();
+        return;
+    }
+    
+    return res.status(403).json({ message: 'Requires administrator role'});
+};
