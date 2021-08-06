@@ -15,9 +15,9 @@ const data =  {
 };
 
 // user token 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDE5M2UwMzI4YzQzMTg3MDFmODFhYSIsImlhdCI6MTYyNzUyNTg5MCwiZXhwIjoxNjI3NjEyMjkwfQ.vLgQX1IfLNpRv_w-5PU7ePYsjow3Z_PsZeI029t4d8Q';
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyODIxODAyMCwiZXhwIjoxNjI4MzA0NDIwfQ.qM7ik954RWpaI-hr0XYh-Qxrka9uwNcVUI7rNbUaueM';
 // Admin user Token
-const Admintoken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyNzUyOTY5NCwiZXhwIjoxNjI3NjE2MDk0fQ.mCB259hvMnp4OOGRxSH3nisvd1HElNMxBy7lmiV2xQU';
+// const Admintoken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyNzUyOTY5NCwiZXhwIjoxNjI3NjE2MDk0fQ.mCB259hvMnp4OOGRxSH3nisvd1HElNMxBy7lmiV2xQU';
 
 beforeAll( async () => {
     await mongoose.connect(config.dbURL, config.dbOptions);
@@ -88,13 +88,13 @@ describe('POST /auth/signin', () => {
         expect( response.body.message ).toEqual('Invalid password') // I should answer this message
     });
 
-    it('should receive a token', async () => {
-        const response = await request(app).post('/api/auth/signin')
-                                           .send( data )
-                                           .set('Accept', 'application/json');
-        expect( response.status ).toBe(200)
-        expect( response.body.token ).not.toBeNull() // don't be null
-    });
+    // it('should receive a token', async () => {
+    //     const response = await request(app).post('/api/auth/signin')
+    //                                        .send( data )
+    //                                        .set('Accept', 'application/json');
+    //     expect( response.status ).toBe(200)
+    //     expect( response.body.token ).not.toBeNull() // don't be null
+    // });
 
 });
 
@@ -141,4 +141,92 @@ describe('GET /user/', () => {
     //     expect( response.status ).toBe(200)
     //     expect( Array.isArray( response.body.users ) ).toBe(true); // Is an arrangement
     // });
+});
+
+describe('GET /user/{id}', () => {
+
+    let id = '610ca28048efb525dc5b3022';
+    it('User does not exist 2', async () => {
+        const response = await request(app).get(`/api/user/${ id }`)
+                                     .set('Accept', 'application/json')
+                                     .set('token', token);
+
+        // expect( response.error ).toBe(true) // Exist errors
+        expect( response.status ).toBe(404)
+        expect( response.body.message ).toEqual('The user does not exists') // I should answer this message
+    });
+
+    let id2 = '610ca28048efb525dc5b3020';
+    it('Should return a user', async () => {
+        const response = await request(app).get(`/api/user/${ id2 }`)
+                                     .set('Accept', 'application/json')
+                                     .set('token', token);
+
+        // expect( response.error ).toBe(true) // Exist errors
+        expect( response.status ).toBe(200)
+        expect( response.body.user ).not.toBeNull() // Do not return null the body
+    });
+});
+
+describe('PUT /user/{id}', () => {
+    let id = '610193e0328c4318701f81aa';
+    it('should answer wrong data', async () => {
+        let data2 = { ...data };
+        data2.username =  '';
+        data2.email = 'steveError.gmail.com';
+        const response = await request(app).put(`/api/user/${ id }`)
+                                           .send( data2 )
+                                           .set('Accept', 'application/json')
+                                           .set('token', token);
+        
+        expect( response.status ).toBe(200)
+        expect( response.body.message ).toEqual('Incorrect data') // I should answer this message
+
+    });
+
+    let idf = '610193e0328c4318701f82aa';
+    it('User does not exist', async () => {
+        const response = await request(app).put(`/api/user/${ idf }`)
+                                           .send( data )
+                                           .set('Accept', 'application/json')
+                                           .set('token', token);
+        expect( response.status ).toBe(404)
+        expect( response.body.message ).toEqual('The user does not exists') // I should answer this message
+    });
+
+    let id3 = '610193e0328c4318701f81aa';
+    it('Should return a user', async () => {
+        let datau = { ...data };
+        datau.photo = 'profileSteve.png';
+        delete datau.idRole;
+        delete datau.password;
+        const response = await request(app).put(`/api/user/${ id3 }`)
+                                           .send( datau )
+                                           .set('Accept', 'application/json')
+                                           .set('token', token);
+
+        // expect( response.error ).toBe(true) // Exist errors
+        expect( response.status ).toBe(200)
+        expect( response.body.user ).not.toBeNull() // Do not return null the body
+    });
+});
+
+describe('DELETE /user/{id}', () => {
+    let idf = '610193e0328c4318701f01aa';
+    it('User does not exists', async () => {
+        const response = await request(app).delete(`/api/user/${ idf }`)
+                                           .set('Accept', 'application/json')
+                                           .set('token', token);
+        expect( response.status ).toBe(404)
+        expect( response.body.message ).toEqual('The user does not exists') // I should answer this message
+    });
+
+    let id= '610ca28048efb525dc5b3020';
+    it('User deleted', async () => {
+        const response = await request(app).delete(`/api/user/${ id }`)
+                                           .set('Accept', 'application/json')
+                                           .set('token', token);
+        expect( response.status ).toBe(200)
+        expect( response.body.message ).toEqual('User deleted') // I should answer this message
+    });
 });
