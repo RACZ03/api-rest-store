@@ -6,7 +6,7 @@ const discountSchema = new Schema({
         type: String,
         unique: true
     },
-    percentage: String,
+    percentage: Number,
     startDate: Date,
     endDate: Date,
     status: Boolean

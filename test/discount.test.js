@@ -38,8 +38,9 @@ describe('POST /api/discount/store', () => {
     });
 
     it('should answer with empty data', async () => {
-        let data2 = { ...data };
-        data2.discountCode=  '';
+       let data2 = { ...data };
+
+        data2.discountCode= '';
      
         const response = await request(app).post('/api/discount/store')
                                            .send( data2 )
