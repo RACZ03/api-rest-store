@@ -1,38 +1,47 @@
 import validator from 'validator';
-import User from '../models/User';
-import jwt from 'jsonwebtoken';
-import config from '../config';
+import Discount from '../models/Discount';
+import {isNumeric} from '../helpers/isNumeric';
 
 export const store = async (req, res) => {
    //capture data 
     const { discountCode, percentage, startDate, endDate } =  req.body;
 
-    //validate data
-    let validate_discountCode = !validator.isEmpty( discountCode );
-    let validate_percentage = !validator.isNumeric( percentage );
-    let validate_startDate = !validator.isEmpty( startDate );
-    let validate_endDate = !validator.isEmpty( endDate );
+    //array of validation
+    const validate = [
+        !validator.isEmpty( discountCode ),
+        await isNumeric(percentage),
+        !validator.isEmpty( startDate ),
+        !validator.isEmpty( endDate ),
+    ];
 
-    if ( validate_discountCode  && validate_percentage  && validate_startDate && validate_endDate) {
+    //validate array
+    if ( validate.every(v => v === true)) {
 
-       // Create the object
-        const newUser = new User({
-            username,
-            email,
-            photo,
-            password: await User.encryptPassword( password ),
-            idRole: await User.assignRole(),
-            phoneNumber: phoneNumber
-        });
+      // Create the object
+      const newDiscount = new Discount({
+        discountCode,
+        percentage,
+        startDate,
+        endDate,
+        active: false,
+        status: true
+    });
 
-        const savedUser = await newUser.save();
+    try {
+
+        const savedDiscount = await newDiscount.save();
+
         // Response success
-        const token = jwt.sign({ id: savedUser._id }, config.SECRET, {
-            expiresIn: 86400 // 24 Hours
+        res.status(201).json({
+            message: 'Discount saved!',
+            discount: savedDiscount
         });
-
-        res.status(201).json( token );
-
+    } catch( error) {
+       // Response error
+        res.status(409).json({
+            message: 'DiscountCode must be unique, discountCode:'+error.keyValue.discountCode+ ' is already used!'
+        });
+    }
     } else {
         //Incorrect data
         res.status(200).json({

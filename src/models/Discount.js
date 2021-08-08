@@ -9,6 +9,7 @@ const discountSchema = new Schema({
     percentage: Number,
     startDate: Date,
     endDate: Date,
+    active: Boolean,
     status: Boolean
 }, {
     timestamps: true,

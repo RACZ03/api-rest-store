@@ -1,7 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import pkg from '../package.json';
-import { createRoles } from './libs/initialSetup';
+import { createRoles } from './helpers/initialSetup';
 
 // Imports routes
 import authRoutes from './routes/auth.routes';
