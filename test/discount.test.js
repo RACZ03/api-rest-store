@@ -23,6 +23,7 @@ beforeAll( async () => {
 afterAll(() => { 
     mongoose.connection.close();
 })
+
 //post
 describe('POST /api/discount/store', () => { 
     
@@ -84,6 +85,20 @@ describe('POST /api/discount/store', () => {
         expect( response.status ).toBe(409)
     });
 
+
+});
+
+//get
+describe('GET /api/discount/',() => {
+
+    it('get discounts', async () => {
+  
+        const response = await request(app).get('/api/discount/')
+                                           .set('token', Admintoken);
+
+        expect( response.status ).toBe(200)
+        expect( Array.isArray( response.body.discounts ) ).toBe(true);
+    });
 
 });
 

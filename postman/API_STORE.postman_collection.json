@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7baf2bed-8937-4d08-a1e9-97cda51b2158",
+		"_postman_id": "fba33ffe-12e6-41c1-8a5a-fb43b19d5c8e",
 		"name": "API_STORE",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -119,6 +119,87 @@
 							"path": [
 								"api",
 								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Discount",
+			"item": [
+				{
+					"name": "discount/store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDczOGRjNDgwZmQzNGY1ZTU5OGIwZiIsImlhdCI6MTYyODMwNDM1NCwiZXhwIjoxNjI4MzkwNzU0fQ.PKPZtatS1vyph69tEjx3MqFcaybEPc9sxfSgXN5x9EA",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"discountCode\": \"prueba\",\n    \"percentage\": 45 ,\n    \"startDate\": \"1020/01/12\",\n    \"endDate\": \"2021/01/12\",\n    \"status\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/discount/store",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"discount",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "discount/get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDczOGRjNDgwZmQzNGY1ZTU5OGIwZiIsImlhdCI6MTYyODMwNDM1NCwiZXhwIjoxNjI4MzkwNzU0fQ.PKPZtatS1vyph69tEjx3MqFcaybEPc9sxfSgXN5x9EA",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"discountCode\": \"prueba\",\n    \"percentage\": 45 ,\n    \"startDate\": \"1020/01/12\",\n    \"endDate\": \"2021/01/12\",\n    \"status\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/discount/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"discount",
 								""
 							]
 						}

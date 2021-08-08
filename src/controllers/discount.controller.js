@@ -2,6 +2,24 @@ import validator from 'validator';
 import Discount from '../models/Discount';
 import {isNumeric} from '../helpers/isNumeric';
 
+//index
+export const index = async (req, res) => {
+    //data
+    const discounts = await Discount.find({});
+    //filter
+    const discountsFiltered = await discounts.filter( 
+        discount => discount.status === true
+    );
+
+    if ( !discountsFiltered ) return res.status(204).json({
+       discounts: [] 
+    })
+
+    // response
+    res.status(200).json({ discounts: discountsFiltered } );
+}
+
+//store
 export const store = async (req, res) => {
    //capture data 
     const { discountCode, percentage, startDate, endDate } =  req.body;
