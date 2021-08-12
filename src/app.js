@@ -6,6 +6,7 @@ import { createRoles } from './helpers/initialSetup';
 // Imports routes
 import authRoutes from './routes/auth.routes';
 import userRoutes from './routes/user.routes';
+import discountRoutes from './routes/discount.routes';
 
 const app = express();
 createRoles();
@@ -26,7 +27,8 @@ app.get('/', (req, res) => {
     });
 });
 
-app.use('/api/auth', authRoutes);
-app.use('/api/user', userRoutes);
+app.use('/api/auth', authRoutes );
+app.use('/api/user', userRoutes );
+app.use('/api/discount', discountRoutes );
 
 export default app;
