@@ -15,7 +15,7 @@ const data =  {
 };
 
 // user token 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyODIxODAyMCwiZXhwIjoxNjI4MzA0NDIwfQ.qM7ik954RWpaI-hr0XYh-Qxrka9uwNcVUI7rNbUaueM';
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyODczMzIxMCwiZXhwIjoxNjI4ODE5NjEwfQ.6o7cD4G-1tQe4n7DucrPLmoF-OqRBYC4FGbG8b5ws2c';
 // Admin user Token
 // const Admintoken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyNzUyOTY5NCwiZXhwIjoxNjI3NjE2MDk0fQ.mCB259hvMnp4OOGRxSH3nisvd1HElNMxBy7lmiV2xQU';
 
@@ -32,7 +32,7 @@ describe('POST /auth/signup', () => {
     it('should answer wrong data', async () => {
         let data2 = { ...data };
         data2.username =  '';
-        data2.email = 'steveError.gmail.com';
+        data2.email = 'ste.gmail.com';
         const response = await request(app).post('/api/auth/signup')
                                            .send( data2 )
                                            .set('Accept', 'application/json');
@@ -230,3 +230,22 @@ describe('DELETE /user/{id}', () => {
         expect( response.body.message ).toEqual('User deleted') // I should answer this message
     });
 });
+
+describe('GET /user/avatar/{filename}', () => {
+    it('Image does not exists', async () => {
+        let filename = 'error-xMD16.jpg';
+        const response = await request(app).get(`/api/user/avatar/${ filename }`)
+                                           .set('Accept', 'application/json')
+                                           .set('token', token);
+        expect( response.status ).toBe(400)
+        expect( response.body.message ).toEqual('Avatar does not exists') // I should answer this message
+    });
+
+    it('Return image', async () => {
+        let filename = '5FwA8r233UPH_G5LlY-xMD16.jpg';
+        const response = await request(app).get(`/api/user/avatar/${ filename }`)
+                                           .set('Accept', 'application/json')
+                                           .set('token', token);
+        expect( response.status ).toBe(200)
+    });
+})

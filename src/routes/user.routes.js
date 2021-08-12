@@ -14,5 +14,6 @@ router.put('/:id', authJwt.verifyToken, userCtrl.updated );
 router.delete('/:id', [ authJwt.verifyToken, authJwt.isAdminOrModerator ], userCtrl.destroy );
 
 router.post('/uploadImage', md_upload, userCtrl.uploadImage ); 
+router.get('/avatar/:filename', userCtrl.getAvatar );
 
 export default router;
