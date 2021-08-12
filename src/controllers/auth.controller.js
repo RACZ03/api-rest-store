@@ -27,7 +27,7 @@ export const signUp = async(req, res) => {
             status: true
         });
     
-        // const savedUser = await newUser.save();
+        const savedUser = await newUser.save();
         // // Response success
         const token = jwt.sign({ id: savedUser._id }, config.SECRET, {
             expiresIn: 86400 // 24 Hours
