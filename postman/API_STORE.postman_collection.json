@@ -27,7 +27,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"Robert\",\r\n    \"email\": \"rmorck03@gmail.com\",\r\n    \"password\": \"1234\",\r\n    \"photo\": \"profile.png\",\r\n    \"phoneNumber\": 86604980\r\n}",
+							"raw": "{\r\n    \"username\": \"Jose\",\r\n    \"email\": \"jose@gmail.com\",\r\n    \"password\": \"1234\",\r\n    \"photo\": \"profile.png\",\r\n    \"phoneNumber\": 86604980\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -63,7 +63,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"steve@gmail.com\",\r\n    \"password\": \"123456\"\r\n}"
+							"raw": "{\r\n    \"email\": \"rmorck03@gmail.com\",\r\n    \"password\": \"1234\"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:5000/api/auth/signin",
@@ -96,7 +96,7 @@
 						"header": [
 							{
 								"key": "token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDE5M2UwMzI4YzQzMTg3MDFmODFhYSIsImlhdCI6MTYyNzUyNjEyMCwiZXhwIjoxNjI3NjEyNTIwfQ.VsafiHaq_-F9LR4JSRW_sc3bI5vxAKqLTDE5zoypo1U",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyODIxODAyMCwiZXhwIjoxNjI4MzA0NDIwfQ.qM7ik954RWpaI-hr0XYh-Qxrka9uwNcVUI7rNbUaueM",
 								"type": "text"
 							},
 							{
@@ -106,8 +106,15 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": ""
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "json",
+									"value": "{ \"firstName\": \"Pedro\", \"lastName\": \"Jose\", \"surname\": \"Mora\", \"secondName\": \"Guitierrez\", \"identityName\": \"401-251090-002G\", \"phoneNumber\": \"505 7666 6666\"}",
+									"type": "text",
+									"disabled": true
+								}
+							]
 						},
 						"url": {
 							"raw": "http://localhost:5000/api/user/",
@@ -120,6 +127,89 @@
 								"api",
 								"user",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/{id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyODEzMDgxMiwiZXhwIjoxNjI4MjE3MjEyfQ.U6S1R19YKQ2NSBzWD8hl5E4jMCwAMT4CFfA0frTHL8E",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "json",
+									"value": "{ \"firstName\": \"Pedro\", \"lastName\": \"Jose\", \"surname\": \"Mora\", \"secondName\": \"Guitierrez\", \"identityName\": \"401-251090-002G\", \"phoneNumber\": \"505 7666 6666\"}",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/user/610193e0328c4318701f81aa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"610193e0328c4318701f81aa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file0",
+									"type": "file",
+									"src": "/D:/Fotos/20170325_094824.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/user/uploadImage",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"uploadImage"
 							]
 						}
 					},

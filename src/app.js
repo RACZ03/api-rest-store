@@ -32,4 +32,3 @@ app.use('/api/user', userRoutes );
 app.use('/api/discount', discountRoutes );
 
 export default app;
- 

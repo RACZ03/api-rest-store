@@ -12,9 +12,9 @@ const data =  {
 };
 
 // user token 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMGRmYTU2M2E1M2M3YWQxNjZiYzQyNiIsImlhdCI6MTYyODMwNjAwNiwiZXhwIjoxNjI4MzkyNDA2fQ.3FbOyBoW1QSfO6WPsG8flDO_yu_Bpe_3r3-osKo6WZo';
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyODczMzIxMCwiZXhwIjoxNjI4ODE5NjEwfQ.6o7cD4G-1tQe4n7DucrPLmoF-OqRBYC4FGbG8b5ws2c';
 // Admin user Token
-const Admintoken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDczOGRjNDgwZmQzNGY1ZTU5OGIwZiIsImlhdCI6MTYyODMwNDk5MiwiZXhwIjoxNjI4MzkxMzkyfQ.kxX9zzF7i8g5BesGwLkd_ZLb4C9euK4B7YBOvYLsdx8';
+const Admintoken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyODczMzIxMCwiZXhwIjoxNjI4ODE5NjEwfQ.6o7cD4G-1tQe4n7DucrPLmoF-OqRBYC4FGbG8b5ws2c';
 
 beforeAll( async () => {
     await mongoose.connect(config.dbURL, config.dbOptions);
