@@ -27,7 +27,7 @@ export const signUp = async(req, res) => {
             status: true
         });
     
-        // const savedUser = await newUser.save();
+        const savedUser = await newUser.save();
         // // Response success
         const token = jwt.sign({ id: savedUser._id }, config.SECRET, {
             expiresIn: 86400 // 24 Hours
@@ -44,7 +44,7 @@ export const signUp = async(req, res) => {
 export const signIn = async(req, res) => {
 
     const { email, password } = req.body;
-    const userFound = await User.findOne({ 'email': email }).populate("idRole");
+    const userFound = await User.findOne({ 'email': email , 'status': true}).populate("idRole");
 
     // Incorrect data
     if (!userFound) return res.status(200).json({ message: 'User not found' });
