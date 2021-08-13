@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fba33ffe-12e6-41c1-8a5a-fb43b19d5c8e",
+		"_postman_id": "c8d87cdc-d624-42ac-b4e1-b71f1d0a6d09",
 		"name": "API_STORE",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -63,7 +63,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"rmorck03@gmail.com\",\r\n    \"password\": \"1234\"\r\n}"
+							"raw": "{\r\n    \"email\": \"jose@gmail.com\",\r\n    \"password\": \"1234\"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:5000/api/auth/signin",
@@ -127,6 +127,53 @@
 								"api",
 								"user",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Avatar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyODIxODAyMCwiZXhwIjoxNjI4MzA0NDIwfQ.qM7ik954RWpaI-hr0XYh-Qxrka9uwNcVUI7rNbUaueM",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "json",
+									"value": "{ \"firstName\": \"Pedro\", \"lastName\": \"Jose\", \"surname\": \"Mora\", \"secondName\": \"Guitierrez\", \"identityName\": \"401-251090-002G\", \"phoneNumber\": \"505 7666 6666\"}",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/user/avatar/ZJVjov_imrvwtzDPqJYFWdi0.jpg",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"avatar",
+								"ZJVjov_imrvwtzDPqJYFWdi0.jpg"
 							]
 						}
 					},
@@ -210,6 +257,103 @@
 								"api",
 								"user",
 								"uploadImage"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SubCategory",
+			"item": [
+				{
+					"name": "GET",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyODIxODAyMCwiZXhwIjoxNjI4MzA0NDIwfQ.qM7ik954RWpaI-hr0XYh-Qxrka9uwNcVUI7rNbUaueM",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "json",
+									"value": "{ \"firstName\": \"Pedro\", \"lastName\": \"Jose\", \"surname\": \"Mora\", \"secondName\": \"Guitierrez\", \"identityName\": \"401-251090-002G\", \"phoneNumber\": \"505 7666 6666\"}",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/subCategory/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subCategory",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/{id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyODEzMDgxMiwiZXhwIjoxNjI4MjE3MjEyfQ.U6S1R19YKQ2NSBzWD8hl5E4jMCwAMT4CFfA0frTHL8E",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "json",
+									"value": "{ \"firstName\": \"Pedro\", \"lastName\": \"Jose\", \"surname\": \"Mora\", \"secondName\": \"Guitierrez\", \"identityName\": \"401-251090-002G\", \"phoneNumber\": \"505 7666 6666\"}",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/user/610193e0328c4318701f81aa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"610193e0328c4318701f81aa"
 							]
 						}
 					},
