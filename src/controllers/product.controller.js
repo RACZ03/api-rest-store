@@ -17,7 +17,12 @@ export const show = async(req, res) => {
     res.status(200).json({ user: [] });
 }
 
-export const updated = async(req, res) => {
+export const store = async(req, res) => {
+
+    res.status(200).json({ message: 'success' });
+}
+
+export const update = async(req, res) => {
 
     return res.status(200).json({ message: 'success' });
 
