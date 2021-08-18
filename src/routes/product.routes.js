@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import * as productCtrl from '../controllers/product.controller';
+import * as userCtrl from '../controllers/user.controller';
 import { authJwt } from '../middlewares';
 // Config multiparty module
 import multiparty from 'connect-multiparty';
@@ -14,7 +15,10 @@ router.get('/:id', productCtrl.show );
 router.put('/:id', productCtrl.update );
 router.delete('/:id', productCtrl.destroy );
 
-router.post('/uploadImage', md_upload, productCtrl.uploadImage ); 
+/* Reuse the image upload api that is in the user controller 
+ since the configuration of the path where it is stored is configured from the path */
+router.post('/uploadImage', md_upload, userCtrl.uploadImage ); 
+
 router.get('/image/:filename', productCtrl.getImage );
 
 export default router;

@@ -6,7 +6,10 @@ const path = require('path');
 
 export const index = async(req, res) => {
 
-    const products = [];
+    /// Find  all subcategories
+    const products = await Product.find({ status: true });
+
+    if (!products) return res.status(200).json({ products: [] })
 
     // response
     res.status(200).json({ products });
@@ -14,7 +17,13 @@ export const index = async(req, res) => {
 
 export const show = async(req, res) => {
 
-    res.status(200).json({ user: [] });
+    const id = req.params.id;
+    const productFound = await Product.findOne({ _id: id, status: true });
+
+    if (!productFound) return res.status(404).json({ message: 'The product does not exists' })
+
+
+    res.status(200).json({ product: productFound });
 }
 
 export const store = async(req, res) => {
@@ -29,32 +38,17 @@ export const update = async(req, res) => {
 }
 
 export const destroy = async(req, res) => {
-    return res.status(200).json({ message: 'User deleted' });
+    const id = req.params.id;
+
+    // found product and update status
+    await Product.findByIdAndUpdate({ _id: id, status: true }, { status: false }, { new: true }, (err, subCategoryUp) => {
+        if (err) return res.status(404).json({ message: 'The product does not exists' });
+        if (!subCategoryUp) return res.status(404).json({ message: 'The product does not exists' });
+
+        return res.status(200).json({ message: 'Product deleted' });
+    });
 };
 
-export const uploadImage = async(req, res) => {
-
-    // Collect file
-    //if (!req.files) return res.status(404).json({ message: 'File not exists' });
-    // Get extension and name
-    //let file_path = req.files.file0.path;
-   /// let file_split = file_path.split('\\');
-   // let file_name = file_split[3];
-
-   // let ext_split = file_name.split('\.');
-   // let file_ext = ext_split[1];
-    // Check extension ( only images), if not delete the file
-  //  if (file_ext !== 'png' && file_ext !== 'jpg' && file_ext !== 'jpeg' && file_ext !== 'gif') {
-     //   fs.unlink(file_path, (err) => {
-   //         return res.status(400).json({ message: 'The file extension es not valid' });
-   //     });
-   // } else {
-  //      return res.status(200).json({ message: 'Upload Image', file: file_name });
-   // }
-
-    return res.status(200).json({ message: 'Upload Image'});
-
-};
 
 export const getImage = async(req, res) => {
     // get filename
