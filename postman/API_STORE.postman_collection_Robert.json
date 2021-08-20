@@ -344,7 +344,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/user/610193e0328c4318701f81aa",
+							"raw": "http://localhost:5000/api/subCategory/611c1bf8fdea6d4230c4b561",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -352,8 +352,80 @@
 							"port": "5000",
 							"path": [
 								"api",
-								"user",
-								"610193e0328c4318701f81aa"
+								"subCategory",
+								"611c1bf8fdea6d4230c4b561"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMTUzZWE4YTExNDY0MWMxNDFiZjJlNiIsImlhdCI6MTYyOTIzNzI3NywiZXhwIjoxNjI5MzIzNjc3fQ.qmnkgigfvtKhdJHvGwQkxtTYjtS7dQ7yubHjGKzf2Ww",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idCat\":\"611543c2f1169e8d1723620c\",\r\n    \"name\":\"Deportivos\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/subCategory/611c1bf8fdea6d4230c4b561",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subCategory",
+								"611c1bf8fdea6d4230c4b561"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMTUzZWE4YTExNDY0MWMxNDFiZjJlNiIsImlhdCI6MTYyOTIzNzI3NywiZXhwIjoxNjI5MzIzNjc3fQ.qmnkgigfvtKhdJHvGwQkxtTYjtS7dQ7yubHjGKzf2Ww",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/subCategory/611c1bf8fdea6d4230c4b561",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subCategory",
+								"611c1bf8fdea6d4230c4b561"
 							]
 						}
 					},
