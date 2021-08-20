@@ -27,5 +27,9 @@ const productSchema = new Schema({
     versionkey: false
 });
 
+// productSchema.statics.checkSubcategoryAndBrand = async () => {
+//     const foundRole = await Role.findOne({ 'name': 'user' })
+//     return foundRole._id;
+// }
 
 export default  model('Product', productSchema);

@@ -1,0 +1,518 @@
+{
+	"info": {
+		"_postman_id": "c8d87cdc-d624-42ac-b4e1-b71f1d0a6d09",
+		"name": "API_STORE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "SignUp",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Transfer-Encoding",
+								"value": "application/vnd.api+json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Jose\",\r\n    \"email\": \"jose@gmail.com\",\r\n    \"password\": \"1234\",\r\n    \"photo\": \"profile.png\",\r\n    \"phoneNumber\": 86604980\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SignIn",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"jose@gmail.com\",\r\n    \"password\": \"1234\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "GET",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyODIxODAyMCwiZXhwIjoxNjI4MzA0NDIwfQ.qM7ik954RWpaI-hr0XYh-Qxrka9uwNcVUI7rNbUaueM",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "json",
+									"value": "{ \"firstName\": \"Pedro\", \"lastName\": \"Jose\", \"surname\": \"Mora\", \"secondName\": \"Guitierrez\", \"identityName\": \"401-251090-002G\", \"phoneNumber\": \"505 7666 6666\"}",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/user/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Avatar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyODIxODAyMCwiZXhwIjoxNjI4MzA0NDIwfQ.qM7ik954RWpaI-hr0XYh-Qxrka9uwNcVUI7rNbUaueM",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "json",
+									"value": "{ \"firstName\": \"Pedro\", \"lastName\": \"Jose\", \"surname\": \"Mora\", \"secondName\": \"Guitierrez\", \"identityName\": \"401-251090-002G\", \"phoneNumber\": \"505 7666 6666\"}",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/user/avatar/ZJVjov_imrvwtzDPqJYFWdi0.jpg",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"avatar",
+								"ZJVjov_imrvwtzDPqJYFWdi0.jpg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/{id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyODEzMDgxMiwiZXhwIjoxNjI4MjE3MjEyfQ.U6S1R19YKQ2NSBzWD8hl5E4jMCwAMT4CFfA0frTHL8E",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "json",
+									"value": "{ \"firstName\": \"Pedro\", \"lastName\": \"Jose\", \"surname\": \"Mora\", \"secondName\": \"Guitierrez\", \"identityName\": \"401-251090-002G\", \"phoneNumber\": \"505 7666 6666\"}",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/user/610193e0328c4318701f81aa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"610193e0328c4318701f81aa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file0",
+									"type": "file",
+									"src": "/D:/Fotos/20170325_094824.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/user/uploadImage",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"uploadImage"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SubCategory",
+			"item": [
+				{
+					"name": "GET",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyODIxODAyMCwiZXhwIjoxNjI4MzA0NDIwfQ.qM7ik954RWpaI-hr0XYh-Qxrka9uwNcVUI7rNbUaueM",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "json",
+									"value": "{ \"firstName\": \"Pedro\", \"lastName\": \"Jose\", \"surname\": \"Mora\", \"secondName\": \"Guitierrez\", \"identityName\": \"401-251090-002G\", \"phoneNumber\": \"505 7666 6666\"}",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/subCategory/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subCategory",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/{id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyODEzMDgxMiwiZXhwIjoxNjI4MjE3MjEyfQ.U6S1R19YKQ2NSBzWD8hl5E4jMCwAMT4CFfA0frTHL8E",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "json",
+									"value": "{ \"firstName\": \"Pedro\", \"lastName\": \"Jose\", \"surname\": \"Mora\", \"secondName\": \"Guitierrez\", \"identityName\": \"401-251090-002G\", \"phoneNumber\": \"505 7666 6666\"}",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/subCategory/611c1bf8fdea6d4230c4b561",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subCategory",
+								"611c1bf8fdea6d4230c4b561"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMTUzZWE4YTExNDY0MWMxNDFiZjJlNiIsImlhdCI6MTYyOTIzNzI3NywiZXhwIjoxNjI5MzIzNjc3fQ.qmnkgigfvtKhdJHvGwQkxtTYjtS7dQ7yubHjGKzf2Ww",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idCat\":\"611543c2f1169e8d1723620c\",\r\n    \"name\":\"Deportivos\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/subCategory/611c1bf8fdea6d4230c4b561",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subCategory",
+								"611c1bf8fdea6d4230c4b561"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMTUzZWE4YTExNDY0MWMxNDFiZjJlNiIsImlhdCI6MTYyOTIzNzI3NywiZXhwIjoxNjI5MzIzNjc3fQ.qmnkgigfvtKhdJHvGwQkxtTYjtS7dQ7yubHjGKzf2Ww",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/subCategory/611c1bf8fdea6d4230c4b561",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subCategory",
+								"611c1bf8fdea6d4230c4b561"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Discount",
+			"item": [
+				{
+					"name": "discount/store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDczOGRjNDgwZmQzNGY1ZTU5OGIwZiIsImlhdCI6MTYyODMwNDM1NCwiZXhwIjoxNjI4MzkwNzU0fQ.PKPZtatS1vyph69tEjx3MqFcaybEPc9sxfSgXN5x9EA",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"discountCode\": \"prueba\",\n    \"percentage\": 45 ,\n    \"startDate\": \"1020/01/12\",\n    \"endDate\": \"2021/01/12\",\n    \"status\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/discount/store",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"discount",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "discount/get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDczOGRjNDgwZmQzNGY1ZTU5OGIwZiIsImlhdCI6MTYyODMwNDM1NCwiZXhwIjoxNjI4MzkwNzU0fQ.PKPZtatS1vyph69tEjx3MqFcaybEPc9sxfSgXN5x9EA",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"discountCode\": \"prueba\",\n    \"percentage\": 45 ,\n    \"startDate\": \"1020/01/12\",\n    \"endDate\": \"2021/01/12\",\n    \"status\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/discount/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"discount",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
