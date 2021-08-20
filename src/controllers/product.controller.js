@@ -28,7 +28,60 @@ export const show = async(req, res) => {
 
 export const store = async(req, res) => {
 
-    res.status(200).json({ message: 'success' });
+    //capture data 
+    const { idSubCategory, idBrand, idUser, name, description, price, discount, stoke, photos, clasifications } =  req.body;
+
+    //array of validation
+    const validate = [
+        !validator.isEmpty( idSubCategory ),
+        !validator.isEmpty( idBrand ),
+        !validator.isEmpty( idUser ),
+        !validator.isEmpty( name ),
+        !validator.isEmpty( description ),
+        await isNumeric(price),
+        await isNumeric(stoke),
+        !validator.isEmpty( photos )
+    ];
+
+    //validate array
+    if ( validate.every(v => v === true)) {
+   
+        // Create the object
+        const newProduct = new Product({
+           idSubCategory,
+           idBrand,
+           idUser,
+           name,
+           description,
+           price,
+           discount,
+           stoke,
+           photos,
+           clasifications,
+           status: true
+       });
+   
+       try {
+   
+           const savedProduct = await newProduct.save();
+   
+           // Response success
+           res.status(201).json({
+               message: 'Producto saved!',
+               product: savedProduct
+           });
+       } catch( error) {
+          // Response error
+           res.status(409).json({
+               message: 'Save failed'
+           });
+       }
+    } else {
+        //Incorrect data
+        res.status(200).json({
+            message: 'Incorrect data'
+        });
+    }
 }
 
 export const update = async(req, res) => {
