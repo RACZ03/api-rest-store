@@ -6,7 +6,6 @@ import Role from '../models/Role';
 export const verifyToken = async (req, res, next) => {
     try {
         const token = req.headers['token'];
-    
         if ( !token ) return res.status(403).json({ message: 'No token provided' })
     
         const decoded = jwt.verify(token, config.SECRET);
