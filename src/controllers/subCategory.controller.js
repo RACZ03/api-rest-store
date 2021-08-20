@@ -48,7 +48,7 @@ export const store = async (req, res) => {
             const savedSubCategory = await newSubCategory.save();
             // Response success
             res.status(201).json({
-                message: 'Discount saved!',
+                message: 'Subcategory saved!',
                 subCategory: savedSubCategory
             });
         } catch( error) {
