@@ -66,12 +66,12 @@
 							"raw": "{\r\n    \"email\": \"jose@gmail.com\",\r\n    \"password\": \"1234\"\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/auth/signin",
+							"raw": "http://localhost:4000/api/auth/signin",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5000",
+							"port": "4000",
 							"path": [
 								"api",
 								"auth",
@@ -426,6 +426,414 @@
 								"api",
 								"subCategory",
 								"611c1bf8fdea6d4230c4b561"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "GET",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyODIxODAyMCwiZXhwIjoxNjI4MzA0NDIwfQ.qM7ik954RWpaI-hr0XYh-Qxrka9uwNcVUI7rNbUaueM",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "json",
+									"value": "{ \"firstName\": \"Pedro\", \"lastName\": \"Jose\", \"surname\": \"Mora\", \"secondName\": \"Guitierrez\", \"identityName\": \"401-251090-002G\", \"phoneNumber\": \"505 7666 6666\"}",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/product/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/{id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyODEzMDgxMiwiZXhwIjoxNjI4MjE3MjEyfQ.U6S1R19YKQ2NSBzWD8hl5E4jMCwAMT4CFfA0frTHL8E",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "json",
+									"value": "{ \"firstName\": \"Pedro\", \"lastName\": \"Jose\", \"surname\": \"Mora\", \"secondName\": \"Guitierrez\", \"identityName\": \"401-251090-002G\", \"phoneNumber\": \"505 7666 6666\"}",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/Product/61212035b00104279cdbc445",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"Product",
+								"61212035b00104279cdbc445"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMTUzZWE4YTExNDY0MWMxNDFiZjJlNiIsImlhdCI6MTYyOTU1OTA3MCwiZXhwIjoxNjI5NjQ1NDcwfQ.w0gym4AdHII1K58Ise3b6Lj-1BIXFU82telDo8fTjCg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idBrand\":\"612119ec8781ea21e88677ad\",\r\n    \"idSubCategory\":\"611c1bf8fdea6d4230c4b561\",\r\n    \"idUser\": \"61153ea8a114641c141bf2e6\",\r\n    \"name\": \"Test uptdate\",\r\n    \"description\": \"Description\",\r\n    \"price\": 20,\r\n    \"discount\": 10,\r\n    \"stoke\": 10,\r\n    \"photos\": [\"image1.png\", \"image2.png\"]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/product/61212035b00104279cdbc445",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"product",
+								"61212035b00104279cdbc445"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMTUzZWE4YTExNDY0MWMxNDFiZjJlNiIsImlhdCI6MTYyOTU1OTA3MCwiZXhwIjoxNjI5NjQ1NDcwfQ.w0gym4AdHII1K58Ise3b6Lj-1BIXFU82telDo8fTjCg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idBrand\":\"612119ec8781ea21e88677ad\",\r\n    \"idSubCategory\":\"611c1bf8fdea6d4230c4b561\",\r\n    \"idUser\": \"61153ea8a114641c141bf2e6\",\r\n    \"name\": \"Test\",\r\n    \"description\": \"Description\",\r\n    \"price\": 20,\r\n    \"discount\": 10,\r\n    \"stoke\": 10,\r\n    \"photos\": [\"image1.png\", \"image2.png\"]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMTUzZWE4YTExNDY0MWMxNDFiZjJlNiIsImlhdCI6MTYyOTU1OTA3MCwiZXhwIjoxNjI5NjQ1NDcwfQ.w0gym4AdHII1K58Ise3b6Lj-1BIXFU82telDo8fTjCg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/product/6121210af817dd05f8386566",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"product",
+								"6121210af817dd05f8386566"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Brand",
+			"item": [
+				{
+					"name": "GET",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyODIxODAyMCwiZXhwIjoxNjI4MzA0NDIwfQ.qM7ik954RWpaI-hr0XYh-Qxrka9uwNcVUI7rNbUaueM",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "json",
+									"value": "{ \"firstName\": \"Pedro\", \"lastName\": \"Jose\", \"surname\": \"Mora\", \"secondName\": \"Guitierrez\", \"identityName\": \"401-251090-002G\", \"phoneNumber\": \"505 7666 6666\"}",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/brand/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"brand",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/{id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDIyMWRlZmM1MzQyMDExYzEwOWMzYSIsImlhdCI6MTYyODEzMDgxMiwiZXhwIjoxNjI4MjE3MjEyfQ.U6S1R19YKQ2NSBzWD8hl5E4jMCwAMT4CFfA0frTHL8E",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "json",
+									"value": "{ \"firstName\": \"Pedro\", \"lastName\": \"Jose\", \"surname\": \"Mora\", \"secondName\": \"Guitierrez\", \"identityName\": \"401-251090-002G\", \"phoneNumber\": \"505 7666 6666\"}",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/brand/612119ec8781ea21e88677ad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"brand",
+								"612119ec8781ea21e88677ad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMTUzZWE4YTExNDY0MWMxNDFiZjJlNiIsImlhdCI6MTYyOTU1OTA3MCwiZXhwIjoxNjI5NjQ1NDcwfQ.w0gym4AdHII1K58Ise3b6Lj-1BIXFU82telDo8fTjCg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"NIKE\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/brand/612119ec8781ea21e88677ad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"brand",
+								"612119ec8781ea21e88677ad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMTUzZWE4YTExNDY0MWMxNDFiZjJlNiIsImlhdCI6MTYyOTU1OTA3MCwiZXhwIjoxNjI5NjQ1NDcwfQ.w0gym4AdHII1K58Ise3b6Lj-1BIXFU82telDo8fTjCg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Nike\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/brand",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"brand"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMTUzZWE4YTExNDY0MWMxNDFiZjJlNiIsImlhdCI6MTYyOTU1OTA3MCwiZXhwIjoxNjI5NjQ1NDcwfQ.w0gym4AdHII1K58Ise3b6Lj-1BIXFU82telDo8fTjCg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/brand/612119ec8781ea21e88677ad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"brand",
+								"612119ec8781ea21e88677ad"
 							]
 						}
 					},

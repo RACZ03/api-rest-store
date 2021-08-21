@@ -9,11 +9,11 @@ const md_upload = multiparty({ uploadDir: './src/uploads/products'});
 
 const router = Router();
  
-router.post('/', authJwt.verifyToken, productCtrl.store );
 router.get('/', productCtrl.index );
 router.get('/:id', productCtrl.show );
-router.put('/:id', productCtrl.update );
-router.delete('/:id', productCtrl.destroy );
+router.post('/', [ authJwt.verifyToken, authJwt.isAdminOrModerator ], productCtrl.store );
+router.put('/:id', [ authJwt.verifyToken, authJwt.isAdminOrModerator ], productCtrl.update );
+router.delete('/:id', [ authJwt.verifyToken, authJwt.isAdminOrModerator ], productCtrl.destroy );
 
 /* Reuse the image upload api that is in the user controller 
  since the configuration of the path where it is stored is configured from the path */

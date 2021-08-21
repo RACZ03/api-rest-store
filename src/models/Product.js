@@ -1,4 +1,7 @@
 import { Schema, model } from 'mongoose';
+import Brand from './Brand';
+import SubCategory from './SubCategory';
+
 
 const productSchema = new Schema({
 
@@ -27,9 +30,22 @@ const productSchema = new Schema({
     versionkey: false
 });
 
-// productSchema.statics.checkSubcategoryAndBrand = async () => {
-//     const foundRole = await Role.findOne({ 'name': 'user' })
-//     return foundRole._id;
-// }
+// Method to validate the existence of the trademark and subcategory registration
+productSchema.statics.checkSubcategoryAndBrand = async (idBrand, idSubCategory) => {
+    try {
+        // Check brand
+        const foundBrand = await Brand.findById( idBrand );
+        if ( !foundBrand ) return 'There is no brand with that id';
+    
+        // Check subcategory
+        const foundSubcategory = await SubCategory.findById( idSubCategory );
+        if ( !foundSubcategory ) return 'There is no subcategory with that id';
+        
+        // If everything is correct, return true
+        return true;
+    } catch(e) {
+        return 'Wrong id';
+    }
+}
 
 export default  model('Product', productSchema);
