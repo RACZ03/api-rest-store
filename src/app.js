@@ -10,6 +10,7 @@ import discountRoutes from './routes/discount.routes';
 import subCategoryRoutes from './routes/subCategory.routes';
 import brandRoutes from './routes/brand.routes';
 import productRoutes from './routes/product.routes';
+import favoriteRoutes from './routes/favorite.routes';
 
 const app = express();
 createRoles();
@@ -36,5 +37,6 @@ app.use('/api/discount', discountRoutes );
 app.use('/api/subCategory', subCategoryRoutes );
 app.use('/api/product', productRoutes);
 app.use('/api/brand', brandRoutes);
+app.use('/api/favorite', favoriteRoutes);
 
 export default app;

@@ -17,7 +17,6 @@ export const show = async (req, res) => {
     const id = req.params.id;
     const brandFound = await Brand.findOne({ _id: id, status: true });
 
-    console.log(id)
     if (!brandFound) return res.status(404).json({ message: 'The Brand does not exists' })
 
 
