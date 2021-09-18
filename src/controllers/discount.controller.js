@@ -39,8 +39,8 @@ export const store = async (req, res) => {
     const validate = [
         !validator.isEmpty( discountCode ),
         await isNumeric(percentage),
-        !validator.isEmpty( startDate ),
-        !validator.isEmpty( endDate ),
+        validator.isDate( startDate ),
+        validator.isDate( endDate )
     ];
 
     //validate array
@@ -78,3 +78,40 @@ export const store = async (req, res) => {
         });
     }
 } 
+
+//update only the endDate
+export const updated = async(req, res) => {
+    const id = req.params.id;
+    const endDate = req.body.endDate;
+    // array of validation
+    const validate = [
+        validator.isDate(endDate) 
+    ];
+
+    // validate array data and if there is incorrect data return
+    if (validate.every(v => v === true)) {
+        // If the data is correct, proceed to update the information
+        await Discount.findByIdAndUpdate({ _id: id, status: true }, endDate, { new: true }, (err, discountUp) => {
+            if (err) return res.status(404).json({ message: 'The discount does not exists' });
+            if (!discountUp) return res.status(404).json({ message: 'The discount does not exists' });
+    
+            return res.status(200).json({ message: 'success', discount: discountUp });
+        });
+    } else {
+        // return incorrect data
+        res.status(200).json({ message: 'Incorrect data' });
+    }
+
+}
+
+//destroy
+export const destroy = async(req, res) => {
+    const id = req.params.id;
+
+    await Discount.findByIdAndUpdate({ _id: id}, { status: false }, { new: true }, (err, discountUp) => {
+        if (err) return res.status(404).json({ message: 'The discount does not exists!' });
+        if (!discountUp) return res.status(404).json({ message: 'The discount does not exists!' });
+
+        return res.status(200).json({ message: 'Discount deleted!' });
+    });
+};
