@@ -19,6 +19,17 @@ export const index = async (req, res) => {
     res.status(200).json({ discounts: discountsFiltered } );
 }
 
+//show by code
+export const show = async(req, res) => {
+    const code = req.params.code;
+    const discountFound = await Discount.findOne({ discountCode: code, status: true });;
+
+    if (!discountFound) return res.status(404).json({ message: 'The discount code not exists' })
+
+
+    res.status(200).json({ discount: discountFound });
+}
+
 //store
 export const store = async (req, res) => {
    //capture data 
@@ -57,7 +68,7 @@ export const store = async (req, res) => {
     } catch( error) {
        // Response error
         res.status(409).json({
-            message: 'DiscountCode must be unique, discountCode:'+error.keyValue.discountCode+ ' is already used!'
+            message: 'DiscountCode must be unique, discountCode: ' +discountCode+ ' is already used!'
         });
     }
     } else {
