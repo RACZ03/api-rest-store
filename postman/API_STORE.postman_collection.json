@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c8d87cdc-d624-42ac-b4e1-b71f1d0a6d09",
+		"_postman_id": "b55972da-3114-41c2-ad33-2011439bb83b",
 		"name": "API_STORE",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -35,12 +35,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/auth/signup",
+							"raw": "http://localhost:4000/api/auth/signup",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5000",
+							"port": "4000",
 							"path": [
 								"api",
 								"auth",
@@ -66,12 +66,12 @@
 							"raw": "{\r\n    \"email\": \"jose@gmail.com\",\r\n    \"password\": \"1234\"\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/auth/signin",
+							"raw": "http://localhost:4000/api/auth/signin",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5000",
+							"port": "4000",
 							"path": [
 								"api",
 								"auth",
@@ -371,7 +371,7 @@
 						"header": [
 							{
 								"key": "token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDczOGRjNDgwZmQzNGY1ZTU5OGIwZiIsImlhdCI6MTYyODMwNDM1NCwiZXhwIjoxNjI4MzkwNzU0fQ.PKPZtatS1vyph69tEjx3MqFcaybEPc9sxfSgXN5x9EA",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDY1YjBmZmVkYWY0MzdkM2NlYzBkNSIsImlhdCI6MTYzMjAwMDgxMiwiZXhwIjoxNjMyMDg3MjEyfQ.Ktr9DoQpQrphktfvnBaVItMFxOJtFS9AOcWX6jpmCcc",
 								"type": "text"
 							},
 							{
@@ -385,12 +385,12 @@
 							"raw": "{\n    \"discountCode\": \"prueba\",\n    \"percentage\": 45 ,\n    \"startDate\": \"1020/01/12\",\n    \"endDate\": \"2021/01/12\",\n    \"status\": true\n}"
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/discount/store",
+							"raw": "http://localhost:4000/api/discount/store",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5000",
+							"port": "4000",
 							"path": [
 								"api",
 								"discount",
@@ -435,6 +435,119 @@
 								"api",
 								"discount",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "discount/get/code",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDY1YjBmZmVkYWY0MzdkM2NlYzBkNSIsImlhdCI6MTYzMjAwMDgxMiwiZXhwIjoxNjMyMDg3MjEyfQ.Ktr9DoQpQrphktfvnBaVItMFxOJtFS9AOcWX6jpmCcc",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"discountCode\": \"prueba\",\n    \"percentage\": 45 ,\n    \"startDate\": \"1020/01/12\",\n    \"endDate\": \"2021/01/12\",\n    \"status\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/discount/promo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"discount",
+								"promo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "discount/put/id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDY1YjBmZmVkYWY0MzdkM2NlYzBkNSIsImlhdCI6MTYzMjAwMDgxMiwiZXhwIjoxNjMyMDg3MjEyfQ.Ktr9DoQpQrphktfvnBaVItMFxOJtFS9AOcWX6jpmCcc",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"endDate\": \"2021/01/12\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/discount/61466043c97b535173691677",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"discount",
+								"61466043c97b535173691677"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "discount/delete/id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDY1YjBmZmVkYWY0MzdkM2NlYzBkNSIsImlhdCI6MTYzMjAwMDgxMiwiZXhwIjoxNjMyMDg3MjEyfQ.Ktr9DoQpQrphktfvnBaVItMFxOJtFS9AOcWX6jpmCcc",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"endDate\": \"2021/01/12\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/discount/61466043c97b535173691677",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"discount",
+								"61466043c97b535173691677"
 							]
 						}
 					},
